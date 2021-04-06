@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+/*alternative to "using namespace std;"
+using std::cin;
+using std::cout;
+using std::endl;
+*/
+#include<cmath>//sqrt may be used according to the guidelines
+
+
+
+/*declare a function so that the block of code can be  recycled*/
+bool PrimalityTest(unsigned long n);//do not ask me why; I copy from readme.file; and unsigned means not negative and long means a lot of storage
+
+int main()
+{
+     /*declare all the variables*/
+  unsigned long a;
+  int b,c;
+  b=1; //b=1 indicates the integer is prime
+  c=0;//c=0 indicates the integer is not prime
+  /*------------delete for debugging-----
+  cout<<"1 means the integer is prime"<<endl;
+  cout<<"0 means the integer is not prime"<<endl;*/
+
+ /*----ask user for the input----*/
+  /*cout<<"please enter an integer to be tested for primality:\n"<<endl;
+ ----not necessary-------*/
+
+  while(cin>>a){
+    /*return 1 or 0 as asked*/
+   bool result=PrimalityTest(a);
+   if (result){
+    cout<<b<<endl;}//isPrime=true means it is prime and we indicate it using 1
+   else
+    cout<<c<<endl;}
+
+  return 0;}
+
+
+
+
+/*----define the function here----*/
+bool PrimalityTest(unsigned long n){
+/*test whether number is odd or even*/
+ bool primeResult=true;
+ if (n%2==0){//even number
+   if (n==2){
+    primeResult=true;}//2 is prime
+   else {
+    primeResult=false;}
+  //other even integers other than 2 are not prime (do not forget to mention it in main block)
+   }
+/*test whether or not an odd number is prime*/
+ else if(n==1)
+ {  primeResult=false;}//1 is not prime because we do not consider 1 to be prime
+
+ else//we have odd numbers
+  {for(unsigned long d=3; d<=n-2; d+=2)//test every possible divisor from 3 to n-2
+   {if(n%d==0)
+    {primeResult=false;
+     break;}
+     //not prime, no need to continue
+
+    }}
+ return primeResult;
+
+}
